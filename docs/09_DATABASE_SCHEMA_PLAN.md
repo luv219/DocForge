@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No database, migrations, or tables exist yet.
 
-This document plans the relational schema for Aquila DocForge when a backend is implemented. SQL dialect examples use portable types; adjust for MySQL vs PostgreSQL during implementation.
+This document plans the relational schema for Markora PDF when a backend is implemented. SQL dialect examples use portable types; adjust for MySQL vs PostgreSQL during implementation.
 
 ---
 

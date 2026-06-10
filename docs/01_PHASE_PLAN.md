@@ -1,6 +1,6 @@
 # Phase Plan
 
-This document breaks Aquila DocForge development into clear phases. Each phase builds on the previous one.
+This document breaks Markora PDF development into clear phases. Each phase builds on the previous one.
 
 ---
 
@@ -108,7 +108,7 @@ This document breaks Aquila DocForge development into clear phases. Each phase b
 
 ## Phase 8: Deployment
 
-**Goal:** Ship Aquila DocForge for real users.
+**Goal:** Ship Markora PDF for real users.
 
 **Deliverables:**
 - Hosting choice (static host, VPS, or PaaS)

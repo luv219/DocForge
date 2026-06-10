@@ -1,18 +1,18 @@
-# Aquila DocForge — User Guide
+# Markora PDF — User Guide
 
-Aquila DocForge is a free, browser-based tool that turns Markdown into a formatted document preview and exports it as a PDF. Everything runs locally in your browser — no account required for the MVP.
+Markora PDF is a free, browser-based tool that turns Markdown into a formatted document preview and exports it as a PDF. Everything runs locally in your browser — no account required for the MVP.
 
 ---
 
 ## How to open the website
 
-1. Go to the project folder on your computer (`DocForge/`).
+1. Go to the project folder on your computer (repository root).
 2. Open `public/index.html` in a modern web browser (Chrome, Edge, or Firefox recommended).
    - **Double-click** the file, or
    - Use the browser menu: **File → Open File**.
 3. On first visit, an **internet connection** is needed to load parser and PDF libraries from CDN. See `07_KNOWN_LIMITATIONS.md` for offline setup.
 
-You should see the Aquila DocForge header, toolbar, Markdown editor on the left, and preview on the right.
+You should see the Markora PDF header, toolbar, Markdown editor on the left, and preview on the right.
 
 ---
 
@@ -148,4 +148,4 @@ If copy fails (common on some `file://` pages), try serving the site from a loca
 
 ---
 
-*Aquila DocForge MVP — local-first, no login, no cloud save.*
+*Markora PDF MVP — local-first, no login, no cloud save.*

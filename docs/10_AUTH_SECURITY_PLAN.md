@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No login, sessions, or auth code exists in the application yet.
 
-This document defines how Aquila DocForge should handle authentication and security when a backend is added. It extends `02_SECURITY_NOTES.md` (MVP client-side concerns) with server-side requirements.
+This document defines how Markora PDF should handle authentication and security when a backend is added. It extends `02_SECURITY_NOTES.md` (MVP client-side concerns) with server-side requirements.
 
 ---
 
@@ -55,7 +55,7 @@ Store only in `users.password_hash` (see `09_DATABASE_SCHEMA_PLAN.md`).
 ### Session cookie settings
 
 ```
-Set-Cookie: docforge_session=<id>;
+Set-Cookie: markora_session=<id>;
   HttpOnly;
   Secure;          // HTTPS only in production
   SameSite=Lax;    // or Strict for higher security
@@ -79,7 +79,7 @@ Consider for SPA-heavy future; for MVP backend v1, **server-side sessions + cook
 
 ### Threat
 
-Authenticated user visits malicious site that POSTs to DocForge API (e.g. delete document).
+Authenticated user visits malicious site that POSTs to Markora PDF API (e.g. delete document).
 
 ### Mitigation
 
@@ -140,8 +140,8 @@ Never trust `user_id` from client JSON — always use session.
 
 | Cookie | HttpOnly | Secure | SameSite | Purpose |
 |--------|----------|--------|----------|---------|
-| `docforge_session` | Yes | Yes (prod) | Lax | Session ID |
-| `docforge_csrf` | No* | Yes | Strict | CSRF double-submit optional |
+| `markora_session` | Yes | Yes (prod) | Lax | Session ID |
+| `markora_csrf` | No* | Yes | Strict | CSRF double-submit optional |
 
 \* CSRF token may be exposed to JS via meta tag or dedicated endpoint instead of a readable cookie.
 

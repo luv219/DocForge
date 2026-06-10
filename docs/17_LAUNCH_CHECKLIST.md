@@ -1,6 +1,6 @@
 # Launch Checklist (Phase 8 — Planning Only)
 
-> **Status:** Planning checklist only. Aquila DocForge has **not** been launched to production. Use this before any public deployment.
+> **Status:** Planning checklist only. Markora PDF has **not** been launched to production. Use this before any public deployment.
 
 Copy this checklist for each launch (MVP static, backend v1, full stack with PDF).
 

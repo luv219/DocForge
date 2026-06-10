@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No backup jobs, credentials, or cloud storage buckets have been created.
 
-This document defines how Aquila DocForge code, configuration, database, and exported PDFs should be protected **when** a production environment exists. The MVP today is local-only; most items are **future**.
+This document defines how Markora PDF code, configuration, database, and exported PDFs should be protected **when** a production environment exists. The MVP today is local-only; most items are **future**.
 
 ---
 
@@ -116,7 +116,7 @@ Metadata in `pdf_exports` table (`09_DATABASE_SCHEMA_PLAN.md`).
 
 | Setup | Approach |
 |-------|----------|
-| Single VPS | `rclone sync storage/exports/ s3:bucket/docforge/exports/` nightly |
+| Single VPS | `rclone sync storage/exports/ s3:bucket/markora/exports/` nightly |
 | EC2 + S3 | Write PDFs directly to S3; versioning enabled |
 | Lightsail | Periodic snapshot of block storage + export sync |
 

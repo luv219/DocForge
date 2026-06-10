@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. Nothing has been deployed. No servers, domains, or credentials have been provisioned.
 
-This document plans how Aquila DocForge can be hosted for real users, from the **static MVP** (today) through a future **full stack** with backend and PDF microservice.
+This document plans how Markora PDF can be hosted for real users, from the **static MVP** (today) through a future **full stack** with backend and PDF microservice.
 
 ---
 
@@ -201,7 +201,7 @@ User → HTTPS → Nginx
 ## Planned server layout (single VM — future)
 
 ```text
-/var/www/docforge/
+/var/www/markora/
 ├── public/              # MVP frontend (git deploy)
 ├── backend/             # Phase 6 API (future)
 ├── pdf-service/         # Phase 7 worker (future)
@@ -210,7 +210,7 @@ User → HTTPS → Nginx
 │   └── temp/
 └── .env                 # NEVER commit — permissions 600
 
-/etc/nginx/sites-available/docforge
+/etc/nginx/sites-available/markora
 ├── /        → public/
 ├── /api/    → PHP-FPM or Node proxy
 └── (internal) PDF service — localhost:3001 only
@@ -225,8 +225,8 @@ Store in `.env` on server (not in git):
 | Variable | Example placeholder | Purpose |
 |----------|---------------------|---------|
 | `DB_HOST` | `localhost` | Database |
-| `DB_NAME` | `docforge` | Database name |
-| `DB_USER` | `docforge_app` | DB user |
+| `DB_NAME` | `markora` | Database name |
+| `DB_USER` | `markora_app` | DB user |
 | `DB_PASSWORD` | `<generate-at-deploy>` | DB password |
 | `SESSION_SECRET` | `<generate-at-deploy>` | Session signing |
 | `PDF_SERVICE_API_KEY` | `<generate-at-deploy>` | Internal PDF auth |
@@ -240,7 +240,7 @@ Store in `.env` on server (not in git):
 
 | Step | Action |
 |------|--------|
-| 1 | Register domain (e.g. `docforge.example.com`) |
+| 1 | Register domain (e.g. `markora.example.com`) |
 | 2 | Point DNS A record to server IP |
 | 3 | Install Certbot (Let's Encrypt) or use host-managed SSL |
 | 4 | Force HTTP → HTTPS redirect in Nginx |

@@ -1,6 +1,6 @@
 # Known Limitations
 
-This document describes what Aquila DocForge MVP **does not** do yet, and where browser-based tools have inherent constraints. Use it to set expectations for yourself and your users.
+This document describes what Markora PDF MVP **does not** do yet, and where browser-based tools have inherent constraints. Use it to set expectations for yourself and your users.
 
 ---
 

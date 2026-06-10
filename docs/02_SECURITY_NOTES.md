@@ -1,6 +1,6 @@
 # Security Notes
 
-Security considerations for Aquila DocForge, from MVP through future phases.
+Security considerations for Markora PDF, from MVP through future phases.
 
 ---
 
@@ -25,7 +25,7 @@ Security considerations for Aquila DocForge, from MVP through future phases.
 - Allowlist safe tags only (p, h1–h6, ul, ol, li, strong, em, code, pre, blockquote, table elements, a with href only)
 - Strip `javascript:` URLs and event attributes (`onclick`, etc.)
 - Do not render arbitrary iframes or embeds in MVP
-- Document that Aquila DocForge is for trusted personal content, not arbitrary untrusted uploads
+- Document that Markora PDF is for trusted personal content, not arbitrary untrusted uploads
 
 ---
 

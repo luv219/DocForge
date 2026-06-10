@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No API routes, server, or endpoints are implemented.
 
-This document plans the REST-style JSON API for Aquila DocForge backend. Base URL examples assume:
+This document plans the REST-style JSON API for Markora PDF backend. Base URL examples assume:
 
 ```text
 https://api.example.com/v1
@@ -21,7 +21,7 @@ https://example.com/api/v1
 | Topic | Plan |
 |-------|------|
 | Format | JSON request/response bodies |
-| Auth | Session cookie (`docforge_session`) after login |
+| Auth | Session cookie (`markora_session`) after login |
 | CSRF | `X-CSRF-Token` header on mutating requests |
 | IDs | UUID strings in paths |
 | Errors | `{ "error": { "code": "...", "message": "..." } }` |
@@ -288,7 +288,7 @@ GET /api/v1/templates/{slug}
 }
 ```
 
-**Frontend migration:** Replace `DOCFORGE_TEMPLATES` JS load with API call when online; keep JS fallback offline.
+**Frontend migration:** Replace `MARKORA_TEMPLATES` JS load with API call when online; keep JS fallback offline.
 
 ---
 

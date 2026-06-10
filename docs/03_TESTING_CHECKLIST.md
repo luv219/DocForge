@@ -79,7 +79,7 @@ Use this checklist during Phase 5 and after major changes. Mark items pass/fail 
 - [ ] **Sanskrit PDF** — Devanagari Sanskrit line from sample is readable in PDF
 - [ ] **Empty export validation** — **Export PDF** with empty preview shows alert (no download)
 - [ ] **Custom filename test** — set PDF Name to `my-test-doc`, export produces `my-test-doc.pdf`
-- [ ] Default filename `aquila-docforge-document.pdf` when input is cleared before export
+- [ ] Default filename `markora-document.pdf` when input is cleared before export
 - [ ] Export button shows feedback (Exporting… / success or failure alert)
 - [ ] **Print / Save PDF** fallback still works and hides chrome in print preview
 

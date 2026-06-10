@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-Many people write in Markdown because it is fast and portable, but they still need a normal, formatted document view and a PDF for sharing or printing. Existing tools are often too complex, require accounts, or do not produce clean PDF output. Aquila DocForge aims to fill that gap with a simple, browser-based workflow: write Markdown, see the formatted result immediately, and export to PDF.
+Many people write in Markdown because it is fast and portable, but they still need a normal, formatted document view and a PDF for sharing or printing. Existing tools are often too complex, require accounts, or do not produce clean PDF output. Markora PDF aims to fill that gap with a simple, browser-based workflow: write Markdown, see the formatted result immediately, and export to PDF.
 
 ## Target Users
 
@@ -13,7 +13,7 @@ Many people write in Markdown because it is fast and portable, but they still ne
 
 ## Core Workflow
 
-1. User opens Aquila DocForge in a web browser
+1. User opens Markora PDF in a web browser
 2. User types or pastes Markdown into the editor
 3. The app shows a live formatted preview (normal document view)
 4. User clicks **Export to PDF** to download a PDF of the preview

@@ -1,5 +1,5 @@
 /**
- * Aquila DocForge — Phase 5: MVP Polish
+ * Markora PDF — Phase 5: MVP Polish
  * Plain JavaScript + CDN libraries (markdown-it, html2pdf.js).
  *
  * Phase 5 scope:
@@ -27,7 +27,7 @@
   const templateSelect = document.getElementById('templateSelect');
   const loadTemplateBtn = document.getElementById('loadTemplateBtn');
 
-  const DEFAULT_PDF_NAME = 'aquila-docforge-document';
+  const DEFAULT_PDF_NAME = 'markora-document';
   const EXPORT_BTN_LABEL = 'Export PDF';
   const WORDS_PER_MINUTE = 200;
   const PREVIEW_STATUS_DELAY_MS = 600;
@@ -41,7 +41,7 @@
     '</div>';
 
   // --- Sample Markdown (all element types for testing) ---
-  const SAMPLE_MARKDOWN = `# Aquila DocForge Sample
+  const SAMPLE_MARKDOWN = `# Markora PDF Sample
 
 This is a paragraph with **bold text** to demonstrate live preview formatting.
 
@@ -230,10 +230,10 @@ Sanskrit: संस्कृत भाषा अत्यन्त प्रा�
    */
   async function getTemplateContent(templateKey) {
     if (
-      window.DOCFORGE_TEMPLATES &&
-      typeof window.DOCFORGE_TEMPLATES[templateKey] === 'string'
+      window.MARKORA_TEMPLATES &&
+      typeof window.MARKORA_TEMPLATES[templateKey] === 'string'
     ) {
-      return window.DOCFORGE_TEMPLATES[templateKey];
+      return window.MARKORA_TEMPLATES[templateKey];
     }
 
     try {

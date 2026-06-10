@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No backend code, database, or login has been implemented.
 
-This document outlines how Aquila DocForge could grow from a client-only MVP into a server-backed application with saved documents, user accounts, and optional professional PDF generation.
+This document outlines how Markora PDF could grow from a client-only MVP into a server-backed application with saved documents, user accounts, and optional professional PDF generation.
 
 ---
 
@@ -146,7 +146,7 @@ backend/                 (future — not created yet)
 ### Best for
 
 - Production deployments needing **both** easy hosting and **print-quality PDFs**
-- Aquila DocForge long-term architecture (recommended path)
+- Markora PDF long-term architecture (recommended path)
 
 ---
 
@@ -169,7 +169,7 @@ backend/                 (future — not created yet)
 
 **Rationale:**
 
-1. DocForge MVP is beginner-friendly; PHP + MySQL lowers the bar for first backend deployment.
+1. Markora PDF MVP is beginner-friendly; PHP + MySQL lowers the bar for first backend deployment.
 2. Phase 7 already plans a professional PDF microservice; Node is the natural fit for headless browser PDF.
 3. The current frontend is plain JS — it can call a JSON API from either PHP or Node without a framework rewrite.
 4. `storage/exports/` and `storage/temp/` folders already exist for future server-side file paths.

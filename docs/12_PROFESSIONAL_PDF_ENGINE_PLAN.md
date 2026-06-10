@@ -2,7 +2,7 @@
 
 > **Status:** Planning document only. No PDF microservice, Node server, or Playwright code has been implemented.
 
-This document plans how Aquila DocForge will move from **client-side html2pdf.js** (raster, limited layout control) to a **professional server-side PDF pipeline** using Node.js and Playwright.
+This document plans how Markora PDF will move from **client-side html2pdf.js** (raster, limited layout control) to a **professional server-side PDF pipeline** using Node.js and Playwright.
 
 ---
 

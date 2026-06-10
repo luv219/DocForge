@@ -1,8 +1,8 @@
-# Aquila DocForge
+# Markora PDF
 
 **Convert Markdown into a clean document preview and export it as PDF — entirely in your browser.**
 
-Aquila DocForge is a local-first, beginner-friendly editor for writers, students, and professionals. No build step, no account, and no server required for the MVP.
+Markora PDF is a local-first, beginner-friendly editor for writers, students, and professionals. No build step, no account, and no server required for the MVP.
 
 ---
 
@@ -76,7 +76,7 @@ Templates load from `public/assets/js/templates.js` so they work when opening `i
 ## Project structure
 
 ```
-DocForge/
+.
 ├── public/                 # Web app (open index.html)
 │   ├── index.html
 │   └── assets/

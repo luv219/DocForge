@@ -1,6 +1,6 @@
 # MVP Manual Test Report
 
-Use this report to record hands-on testing of Aquila DocForge after Phase 5. Fill in **Actual result** and **Status** (Pass / Fail) as you test.
+Use this report to record hands-on testing of Markora PDF after Phase 5. Fill in **Actual result** and **Status** (Pass / Fail) as you test.
 
 **Tester:** ____________________  
 **Date:** ____________________  
