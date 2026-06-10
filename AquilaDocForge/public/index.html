@@ -4,9 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aquila DocForge</title>
+  <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body>
-  <h1>Markdown to Normal View and PDF Converter</h1>
-  <p>Phase 0 setup completed.</p>
+
+  <!-- Site header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">Aquila DocForge</h1>
+      <p class="site-subtitle">Convert Markdown into clean preview and PDF</p>
+    </div>
+  </header>
+
+  <!-- Main application area -->
+  <main class="app-main">
+
+    <!-- Toolbar: actions for the editor (Phase 1 = placeholders where noted) -->
+    <nav class="toolbar" aria-label="Editor actions">
+      <button type="button" id="btnNew" class="toolbar-btn">New</button>
+      <button type="button" id="btnLoadSample" class="toolbar-btn">Load Sample</button>
+      <button type="button" id="btnCopyHtml" class="toolbar-btn">Copy HTML</button>
+      <button type="button" id="btnPrint" class="toolbar-btn">Print / Save PDF</button>
+      <button type="button" id="btnExportPdf" class="toolbar-btn toolbar-btn--primary">Export PDF</button>
+    </nav>
+
+    <!-- Two-column editor: Markdown input (left) and preview (right) -->
+    <div class="editor-layout">
+
+      <section class="panel panel--input" aria-label="Markdown input">
+        <h2 class="panel-title">Markdown Input</h2>
+        <textarea
+          id="markdownInput"
+          class="markdown-textarea"
+          placeholder="Type or paste your Markdown here..."
+          spellcheck="false"
+        ></textarea>
+      </section>
+
+      <section class="panel panel--preview" aria-label="Document preview">
+        <h2 class="panel-title">Normal Preview</h2>
+        <div id="previewOutput" class="preview-output">
+          <p class="preview-placeholder">Your formatted preview will appear here in Phase 2.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Phase 1 MVP</span>
+      <span class="footer-separator" aria-hidden="true">·</span>
+      <span>Local-first editor</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
 </body>
 </html>

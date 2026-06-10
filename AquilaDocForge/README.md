@@ -23,16 +23,46 @@ Aquila DocForge is a beginner-friendly web tool that converts Markdown text into
 - Dark mode and accessibility improvements
 - Batch export and sharing links
 
+## Phase 1 Completed Features
+
+- Full static layout: header, toolbar, two-column editor, and footer
+- Markdown input textarea (`#markdownInput`) and preview panel (`#previewOutput`)
+- Toolbar buttons wired with Phase 1 placeholder behavior:
+  - **New** — clears the editor and preview
+  - **Load Sample** — inserts sample Markdown text (no live conversion yet)
+  - **Copy HTML** — shows Phase 2 placeholder alert
+  - **Print / Save PDF** — opens the browser print dialog
+  - **Export PDF** — shows Phase 3 placeholder alert
+- Responsive CSS: two columns on desktop, stacked on mobile
+- Document-style preview panel and table styles ready for Phase 2 output
+- Print stylesheet hides editor chrome and prints the preview area only
+
+## Files Added (Phase 1)
+
+| File | Purpose |
+|------|---------|
+| `public/assets/css/app.css` | Layout, toolbar, editor, preview, and print styles |
+| `public/assets/js/app.js` | Toolbar button handlers (Phase 1 placeholders) |
+
 ## How to Open the Project Locally
 
-Phase 0 contains planning docs and a placeholder page only. No build tools or dependencies are installed yet.
+No build tools or dependencies are required. Plain HTML, CSS, and JavaScript only.
 
 1. Open the project folder: `AquilaDocForge/`
 2. Open `public/index.html` in your web browser (double-click the file or use **File → Open**)
-3. You should see the Aquila DocForge placeholder page confirming Phase 0 setup
+3. You should see the Aquila DocForge editor UI with toolbar and two panels
 
-When development begins in Phase 1, local setup instructions will be updated here.
+## How to Test the UI (Phase 1)
+
+1. **Layout** — Confirm header, toolbar, Markdown panel, preview panel, and footer are visible.
+2. **New** — Type text in the textarea, click **New**; both panels should clear.
+3. **Load Sample** — Click **Load Sample**; sample Markdown appears in the left panel only (preview unchanged).
+4. **Copy HTML** — Click **Copy HTML**; alert says Phase 2.
+5. **Print / Save PDF** — Click the button; browser print dialog opens. Choose a printer or "Save as PDF".
+6. **Export PDF** — Click **Export PDF**; alert says Phase 3.
+7. **Responsive** — Resize the window below 768px width; panels should stack vertically.
+8. **Print preview** — Use Print preview in the browser; toolbar, textarea, header, and footer should be hidden.
 
 ## Current Status
 
-**Phase 0: Planning** — Project structure and documentation are in place. Application development has not started.
+**Phase 1: Static UI** — Editor layout and toolbar are complete. Markdown live preview begins in Phase 2.
