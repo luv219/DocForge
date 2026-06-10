@@ -53,6 +53,8 @@ Then visit [http://localhost:8080](http://localhost:8080).
 
 - No backend, database, or server is required for the current MVP.
 
+**If the live site shows `README.md` instead of the app:** Pages is publishing the repository root. Change **Settings → Pages → Source** from “Deploy from a branch” to **GitHub Actions**, then re-run the **Deploy Markora PDF to GitHub Pages** workflow on `main`. The site entry file is `public/index.html`, not the root README.
+
 ---
 
 ## Usage
