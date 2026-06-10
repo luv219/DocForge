@@ -19,7 +19,7 @@
   <!-- Main application area -->
   <main class="app-main">
 
-    <!-- Toolbar: actions for the editor (Phase 1 = placeholders where noted) -->
+    <!-- Toolbar: editor actions -->
     <nav class="toolbar" aria-label="Editor actions">
       <button type="button" id="btnNew" class="toolbar-btn">New</button>
       <button type="button" id="btnLoadSample" class="toolbar-btn">Load Sample</button>
@@ -44,7 +44,7 @@
       <section class="panel panel--preview" aria-label="Document preview">
         <h2 class="panel-title">Normal Preview</h2>
         <div id="previewOutput" class="preview-output">
-          <p class="preview-placeholder">Your formatted preview will appear here in Phase 2.</p>
+          <p class="preview-placeholder">Start typing Markdown to see a live preview.</p>
         </div>
       </section>
 
@@ -54,12 +54,17 @@
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Phase 1 MVP</span>
+      <span>Phase 2 MVP</span>
       <span class="footer-separator" aria-hidden="true">·</span>
       <span>Local-first editor</span>
     </div>
   </footer>
 
+  <!-- Markdown parser library: markdown-it -->
+  <!-- Offline use: copy markdown-it.min.js to public/assets/vendor/ and update src below -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+  <!-- GFM table support (needed for pipe-style tables in the sample). Offline: public/assets/vendor/ -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-multimd-table@4.2.3/dist/markdown-it-multimd-table.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

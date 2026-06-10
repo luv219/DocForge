@@ -16,6 +16,24 @@ Use this checklist during Phase 5 and after major changes. Mark items pass/fail 
 
 ---
 
+## Markdown Live Preview Tests (Phase 2)
+
+- [ ] Typing in `#markdownInput` updates `#previewOutput` without page refresh
+- [ ] Empty textarea shows placeholder: "Start typing Markdown to see a live preview."
+- [ ] **Load Sample** renders preview immediately (no manual refresh)
+- [ ] **New** clears both textarea and preview placeholder state
+- [ ] Preview updates on every keystroke (including delete and paste)
+- [ ] Parser load failure shows a readable error in the preview panel (test offline if possible)
+- [ ] Render errors display in preview without breaking the rest of the page
+- [ ] **Copy HTML** copies `previewOutput.innerHTML` and shows success alert
+- [ ] **Copy HTML** with empty preview shows a clear "nothing to copy" message
+- [ ] **Copy HTML** shows error alert if clipboard API is unavailable or denied
+- [ ] Raw HTML in Markdown (e.g. `<script>alert(1)</script>`) is **not** executed (`html: false`)
+- [ ] Raw HTML tags display as escaped text or are stripped, not run as live HTML
+- [ ] Plain URLs auto-link when `linkify: true` (e.g. `https://example.com`)
+
+---
+
 ## Markdown Tests
 
 - [ ] Headings (H1–H6) render with correct hierarchy
