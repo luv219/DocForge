@@ -21,12 +21,57 @@
 
     <!-- Toolbar: editor actions -->
     <nav class="toolbar" aria-label="Editor actions">
-      <button type="button" id="btnNew" class="toolbar-btn">New</button>
-      <button type="button" id="btnLoadSample" class="toolbar-btn">Load Sample</button>
-      <button type="button" id="btnCopyHtml" class="toolbar-btn">Copy HTML</button>
-      <button type="button" id="btnPrint" class="toolbar-btn">Print / Save PDF</button>
-      <button type="button" id="btnExportPdf" class="toolbar-btn toolbar-btn--primary">Export PDF</button>
+      <div class="toolbar-row toolbar-row--primary">
+        <div class="toolbar-group">
+          <button type="button" id="btnNew" class="toolbar-btn">New</button>
+          <button type="button" id="btnLoadSample" class="toolbar-btn">Load Sample</button>
+        </div>
+        <div class="toolbar-group toolbar-templates">
+          <label for="templateSelect" class="toolbar-label">Template</label>
+          <select id="templateSelect" class="toolbar-select" aria-label="Select a document template">
+            <option value="">Select Template</option>
+            <option value="legal-notice">Legal Notice</option>
+            <option value="invoice">Invoice</option>
+            <option value="project-report">Project Report</option>
+            <option value="meeting-minutes">Meeting Minutes</option>
+            <option value="readme-template">README Template</option>
+          </select>
+          <button type="button" id="loadTemplateBtn" class="toolbar-btn">Load Template</button>
+        </div>
+      </div>
+      <div class="toolbar-row toolbar-row--secondary">
+        <div class="toolbar-group">
+          <button type="button" id="btnCopyHtml" class="toolbar-btn">Copy HTML</button>
+          <button type="button" id="btnPrint" class="toolbar-btn">Print / Save PDF</button>
+          <button type="button" id="btnExportPdf" class="toolbar-btn toolbar-btn--primary">Export PDF</button>
+        </div>
+        <div class="toolbar-group toolbar-filename">
+          <label for="pdfFileName" class="toolbar-label">PDF Name</label>
+          <input
+            type="text"
+            id="pdfFileName"
+            class="toolbar-input"
+            value="aquila-docforge-document"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </div>
+      </div>
     </nav>
+
+    <!-- Status and document statistics -->
+    <div class="app-meta-bar">
+      <p id="statusMessage" class="status-message status-message--info" role="status" aria-live="polite">
+        Ready. Type Markdown, load a sample, or choose a template to begin.
+      </p>
+      <div class="document-stats" id="documentStats" aria-label="Document statistics">
+        <span id="wordCount">Words: 0</span>
+        <span class="stats-separator" aria-hidden="true">·</span>
+        <span id="charCount">Characters: 0</span>
+        <span class="stats-separator" aria-hidden="true">·</span>
+        <span id="readingTime">Reading time: —</span>
+      </div>
+    </div>
 
     <!-- Two-column editor: Markdown input (left) and preview (right) -->
     <div class="editor-layout">
@@ -44,7 +89,10 @@
       <section class="panel panel--preview" aria-label="Document preview">
         <h2 class="panel-title">Normal Preview</h2>
         <div id="previewOutput" class="preview-output">
-          <p class="preview-placeholder">Start typing Markdown to see a live preview.</p>
+          <div class="preview-empty-state">
+            <p class="preview-placeholder-title">Your formatted document will appear here</p>
+            <p class="preview-placeholder">Type Markdown in the editor, or use <strong>Load Sample</strong> or <strong>Load Template</strong> to get started.</p>
+          </div>
         </div>
       </section>
 
@@ -54,7 +102,7 @@
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Phase 2 MVP</span>
+      <span>MVP Complete</span>
       <span class="footer-separator" aria-hidden="true">·</span>
       <span>Local-first editor</span>
     </div>
@@ -65,6 +113,11 @@
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
   <!-- GFM table support (needed for pipe-style tables in the sample). Offline: public/assets/vendor/ -->
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-multimd-table@4.2.3/dist/markdown-it-multimd-table.min.js"></script>
+  <!-- PDF export library: html2pdf.js -->
+  <!-- Offline use: copy html2pdf.bundle.min.js to public/assets/vendor/ and update src below -->
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+  <!-- Local template content (fallback when .md fetch is unavailable on file://) -->
+  <script src="assets/js/templates.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

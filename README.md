@@ -1,102 +1,167 @@
 # Aquila DocForge
 
-## Purpose
+**Convert Markdown into a clean document preview and export it as PDF — entirely in your browser.**
 
-Aquila DocForge is a beginner-friendly web tool that converts Markdown text into a clean, readable preview and exports that preview as a PDF file. It is designed for writers, students, and professionals who want a simple way to turn Markdown notes into polished documents without complex setup.
+Aquila DocForge is a local-first, beginner-friendly editor for writers, students, and professionals. No build step, no account, and no server required for the MVP.
 
-## MVP Features
+---
 
-- Split-pane editor with Markdown input on one side and live formatted preview on the other
-- Support for common Markdown syntax (headings, lists, bold, italic, links, code blocks, tables)
-- One-click PDF export of the formatted preview
-- Responsive layout that works on desktop and mobile browsers
-- No login or account required for the MVP
+## Features
 
-## Future Features
+- **Live Markdown preview** — split-pane editor with instant formatted output
+- **PDF export** — download a PDF from the preview, or use the browser print dialog
+- **Document templates** — Legal Notice, Invoice, Project Report, Meeting Minutes, README
+- **Copy HTML** — copy rendered preview to the clipboard
+- **Document stats** — word count, character count, estimated reading time
+- **Safe parsing** — raw HTML in Markdown is not executed (`html: false`)
+- **Responsive UI** — works on desktop and mobile browsers
+- **Offline-ready** — vendor copies of key libraries included under `public/assets/vendor/`
 
-- Document templates (resume, report, letter, invoice)
-- Saved documents and version history (with optional backend)
-- Hindi and Sanskrit text support with proper font rendering
-- Custom branding (logo, header, footer)
-- Professional PDF generation via a dedicated microservice
-- User accounts and secure document storage
-- Dark mode and accessibility improvements
-- Batch export and sharing links
+---
 
-## Phase 1 Completed Features
+## Quick start
 
-- Full static layout: header, toolbar, two-column editor, and footer
-- Markdown input textarea (`#markdownInput`) and preview panel (`#previewOutput`)
-- Toolbar buttons wired with Phase 1 placeholder behavior:
-  - **New** — clears the editor and preview
-  - **Load Sample** — inserts sample Markdown text (no live conversion yet)
-  - **Copy HTML** — shows Phase 2 placeholder alert
-  - **Print / Save PDF** — opens the browser print dialog
-  - **Export PDF** — shows Phase 3 placeholder alert
-- Responsive CSS: two columns on desktop, stacked on mobile
-- Document-style preview panel and table styles ready for Phase 2 output
-- Print stylesheet hides editor chrome and prints the preview area only
+No Node.js, npm, or database setup is required.
 
-## Files Added (Phase 1)
+### Option 1 — Open directly
 
-| File | Purpose |
-|------|---------|
-| `public/assets/css/app.css` | Layout, toolbar, editor, preview, and print styles |
-| `public/assets/js/app.js` | Toolbar button handlers (Phase 1 placeholders) |
+1. Clone or download this repository.
+2. Open `public/index.html` in a modern browser (Chrome, Edge, or Firefox).
+   - Double-click the file, or use **File → Open File**.
 
-## How to Open the Project Locally
+### Option 2 — Local web server (recommended)
 
-No build tools or dependencies are required. Plain HTML, CSS, and JavaScript only.
+Some features (clipboard, downloads) work more reliably over HTTP:
 
-1. Open the project folder: `DocForge/` (repository root)
-2. Open `public/index.html` in your web browser (double-click the file or use **File → Open**)
-3. You should see the Aquila DocForge editor UI with toolbar and two panels
+```bash
+cd public
+python -m http.server 8080
+```
 
-## How to Test the UI (Phase 1)
+Then visit [http://localhost:8080](http://localhost:8080).
 
-1. **Layout** — Confirm header, toolbar, Markdown panel, preview panel, and footer are visible.
-2. **New** — Type text in the textarea, click **New**; both panels should clear.
-3. **Load Sample** — Click **Load Sample**; sample Markdown appears in the left panel only (preview unchanged).
-4. **Copy HTML** — Click **Copy HTML**; alert says Phase 2.
-5. **Print / Save PDF** — Click the button; browser print dialog opens. Choose a printer or "Save as PDF".
-6. **Export PDF** — Click **Export PDF**; alert says Phase 3.
-7. **Responsive** — Resize the window below 768px width; panels should stack vertically.
-8. **Print preview** — Use Print preview in the browser; toolbar, textarea, header, and footer should be hidden.
+---
 
-## Phase 2 Completed Features
+## Usage
 
-- **Live Markdown preview** — typing in the editor updates `#previewOutput` on every keystroke
-- **markdown-it parser** (CDN) with safe settings:
-  - `html: false` — raw HTML in Markdown is not executed
-  - `linkify: true` — plain URLs become clickable links
-  - `typographer: true` — typographic punctuation improvements
-- **GFM tables** via `markdown-it-multimd-table` (CDN) for pipe-style tables
-- **Copy HTML** — copies rendered preview HTML to the clipboard with success/error alerts
-- **Load Sample** — inserts full sample document and renders preview immediately
-- **Sample content** includes heading, paragraph, bold, bullet list, numbered list, table, blockquote, code block, Hindi, and Sanskrit lines
-- **Preview CSS** for headings, paragraphs, lists, blockquotes, code, tables, and Devanagari-friendly fonts
-- **Error handling** — parser load failures and render errors show a clear message in the preview panel
+| Action | How |
+|--------|-----|
+| Write Markdown | Type in the **Markdown Input** panel on the left |
+| Preview | Updates automatically on the right |
+| Load demo | Click **Load Sample** |
+| Use a template | Choose from the **Template** dropdown → **Load Template** |
+| Export PDF | Set **PDF Name** if needed → **Export PDF** |
+| Print / Save as PDF | **Print / Save PDF** → choose “Save as PDF” in the dialog |
+| Copy HTML | **Copy HTML** |
+| Clear editor | **New** |
 
-### CDN Libraries (Phase 2)
+For a full walkthrough, see [`docs/06_USER_GUIDE.md`](docs/06_USER_GUIDE.md).
 
-| Library | CDN | Offline copy target |
-|---------|-----|---------------------|
-| markdown-it 14.1.0 | jsDelivr | `public/assets/vendor/markdown-it.min.js` |
-| markdown-it-multimd-table 4.2.3 | jsDelivr | `public/assets/vendor/markdown-it-multimd-table.min.js` |
+---
 
-An internet connection is required on first load until files are copied into `public/assets/vendor/` and `index.html` script `src` values are updated.
+## Templates
 
-## How to Test Live Preview (Phase 2)
+| Template | File | Use case |
+|----------|------|----------|
+| Legal Notice | [`templates/legal-notice.md`](templates/legal-notice.md) | Formal notices |
+| Invoice | [`templates/invoice.md`](templates/invoice.md) | Billing and payments |
+| Project Report | [`templates/project-report.md`](templates/project-report.md) | Status and metrics |
+| Meeting Minutes | [`templates/meeting-minutes.md`](templates/meeting-minutes.md) | Agendas and action items |
+| README Template | [`templates/readme-template.md`](templates/readme-template.md) | Project documentation |
 
-1. Open `public/index.html` in a browser (requires network for CDN scripts on first visit).
-2. Type `# Hello` in the Markdown panel — the preview should show a formatted heading immediately.
-3. Click **Load Sample** — all sample elements (lists, table, blockquote, code, Hindi, Sanskrit) should render in the preview.
-4. Edit the sample text — preview updates live without refreshing.
-5. Click **Copy HTML** — alert confirms HTML was copied; paste into a text editor to verify.
-6. Type `<script>alert('xss')</script>` — it should appear as escaped text, not run as script.
-7. Click **New** — editor and preview reset to empty placeholder.
-8. Click **Print / Save PDF** — print preview should show formatted document content.
+Templates load from `public/assets/js/templates.js` so they work when opening `index.html` via `file://`.
 
-## Current Status
+---
 
-**Phase 2: Markdown Live Preview** — Live conversion and Copy HTML are complete. Direct PDF export begins in Phase 3.
+## Project structure
+
+```
+DocForge/
+├── public/                 # Web app (open index.html)
+│   ├── index.html
+│   └── assets/
+│       ├── css/app.css
+│       ├── js/app.js
+│       ├── js/templates.js
+│       └── vendor/         # Offline library copies
+├── templates/              # Markdown template sources (.md)
+├── docs/                   # Guides and planning documents
+├── storage/                # Reserved for future exports/temp files
+└── README.md
+```
+
+---
+
+## Tech stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | HTML, CSS, vanilla JavaScript |
+| Markdown | [markdown-it](https://github.com/markdown-it/markdown-it) + GFM tables |
+| PDF (client) | [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) |
+| Backend | *Not implemented* — client-only MVP |
+
+Libraries load from jsDelivr CDN by default, with local copies in `public/assets/vendor/` for offline use.
+
+---
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [`docs/06_USER_GUIDE.md`](docs/06_USER_GUIDE.md) | End-user guide |
+| [`docs/07_KNOWN_LIMITATIONS.md`](docs/07_KNOWN_LIMITATIONS.md) | Browser PDF and CDN limits |
+| [`docs/05_MVP_TEST_REPORT.md`](docs/05_MVP_TEST_REPORT.md) | Manual test checklist |
+| [`docs/03_TESTING_CHECKLIST.md`](docs/03_TESTING_CHECKLIST.md) | Full regression checklist |
+| [`docs/01_PHASE_PLAN.md`](docs/01_PHASE_PLAN.md) | Development roadmap (Phases 0–8) |
+
+### Future planning (not built)
+
+Backend, professional PDF microservice, and deployment are **documented only**:
+
+| Topic | Document |
+|-------|----------|
+| Backend architecture | [`docs/08_BACKEND_PLAN.md`](docs/08_BACKEND_PLAN.md) |
+| Database schema | [`docs/09_DATABASE_SCHEMA_PLAN.md`](docs/09_DATABASE_SCHEMA_PLAN.md) |
+| Auth & security | [`docs/10_AUTH_SECURITY_PLAN.md`](docs/10_AUTH_SECURITY_PLAN.md) |
+| REST API | [`docs/11_API_ENDPOINT_PLAN.md`](docs/11_API_ENDPOINT_PLAN.md) |
+| Professional PDF engine | [`docs/12_PROFESSIONAL_PDF_ENGINE_PLAN.md`](docs/12_PROFESSIONAL_PDF_ENGINE_PLAN.md) |
+| Deployment | [`docs/15_DEPLOYMENT_PLAN.md`](docs/15_DEPLOYMENT_PLAN.md) |
+| Launch checklist | [`docs/17_LAUNCH_CHECKLIST.md`](docs/17_LAUNCH_CHECKLIST.md) |
+
+---
+
+## Roadmap
+
+| Phase | Status | Summary |
+|-------|--------|---------|
+| 0–5 | **Complete** | MVP — editor, preview, PDF, templates, polish |
+| 6 | Planned | Backend, saved documents, auth |
+| 7 | Planned | Professional PDF microservice (Playwright) |
+| 8 | Planned | Deployment and launch |
+
+---
+
+## Limitations
+
+- PDF export is browser-based (raster quality); see [`docs/07_KNOWN_LIMITATIONS.md`](docs/07_KNOWN_LIMITATIONS.md)
+- Documents are not saved to a server — copy Markdown or export PDF before closing the tab
+- Hindi/Sanskrit rendering depends on system fonts
+- Internet may be required on first load unless all scripts use local vendor files
+
+---
+
+## Contributing
+
+1. Fork the repository and create a feature branch.
+2. Keep changes focused; match existing plain HTML/CSS/JS style.
+3. Test using [`docs/03_TESTING_CHECKLIST.md`](docs/03_TESTING_CHECKLIST.md).
+4. Open a pull request with a clear description of what changed and why.
+
+---
+
+## Status
+
+**MVP complete** — ready for local use via `public/index.html`.
+
+No backend, database, login, or production deployment exists yet. Planning for Phases 6–8 is in [`docs/`](docs/).

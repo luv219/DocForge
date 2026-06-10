@@ -4,6 +4,24 @@ Use this checklist during Phase 5 and after major changes. Mark items pass/fail 
 
 ---
 
+## Phase 5 Polish Tests
+
+- [ ] `#statusMessage` shows feedback for sample loaded, template loaded, preview updated, HTML copied, PDF started/completed/failed, editor cleared
+- [ ] Status success messages use visible success styling; errors use error styling
+- [ ] Word count updates as user types
+- [ ] Character count updates as user types
+- [ ] Reading time shows `—` when empty and `~N min` when content exists
+- [ ] Empty preview shows improved empty-state title and hint text
+- [ ] Editor and preview panels have clear visual separation (borders, accent colors)
+- [ ] Toolbar rows wrap cleanly on tablet and mobile widths
+- [ ] Empty PDF export blocked with status error (no silent failure)
+- [ ] Copy HTML failure shows status error (not only console)
+- [ ] Missing template selection shows status error and focuses dropdown
+- [ ] Print with empty editor shows status error
+- [ ] `docs/05_MVP_TEST_REPORT.md`, `docs/06_USER_GUIDE.md`, and `docs/07_KNOWN_LIMITATIONS.md` exist and are accurate
+
+---
+
 ## UI Tests
 
 - [ ] Page loads without console errors
@@ -19,7 +37,7 @@ Use this checklist during Phase 5 and after major changes. Mark items pass/fail 
 ## Markdown Live Preview Tests (Phase 2)
 
 - [ ] Typing in `#markdownInput` updates `#previewOutput` without page refresh
-- [ ] Empty textarea shows placeholder: "Start typing Markdown to see a live preview."
+- [ ] Empty textarea shows empty-state preview: "Your formatted document will appear here"
 - [ ] **Load Sample** renders preview immediately (no manual refresh)
 - [ ] **New** clears both textarea and preview placeholder state
 - [ ] Preview updates on every keystroke (including delete and paste)
@@ -47,6 +65,23 @@ Use this checklist during Phase 5 and after major changes. Mark items pass/fail 
 - [ ] Images render when URL is provided (if supported in MVP)
 - [ ] Empty lines and paragraph breaks are preserved appropriately
 - [ ] Special characters (`<`, `>`, `&`) display safely, not as raw HTML execution
+
+---
+
+## PDF Export Tests (Phase 3)
+
+- [ ] **Export PDF** downloads a file without uploading data to any external API
+- [ ] Export captures **only** `#previewOutput`, not header, toolbar, textarea, or footer
+- [ ] **One-page PDF** — short document (single heading + paragraph) exports on one page
+- [ ] **Long PDF** — document with many paragraphs spans multiple pages without severe clipping
+- [ ] **Table PDF** — Load Sample table renders with borders and readable cells in PDF
+- [ ] **Hindi PDF** — Devanagari Hindi line from sample is readable (not blank squares)
+- [ ] **Sanskrit PDF** — Devanagari Sanskrit line from sample is readable in PDF
+- [ ] **Empty export validation** — **Export PDF** with empty preview shows alert (no download)
+- [ ] **Custom filename test** — set PDF Name to `my-test-doc`, export produces `my-test-doc.pdf`
+- [ ] Default filename `aquila-docforge-document.pdf` when input is cleared before export
+- [ ] Export button shows feedback (Exporting… / success or failure alert)
+- [ ] **Print / Save PDF** fallback still works and hides chrome in print preview
 
 ---
 

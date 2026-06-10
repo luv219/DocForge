@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Aquila DocForge — Phase 2 Live Preview UI
+   Aquila DocForge — Phase 5 MVP Polish
    Plain CSS only. No frameworks or preprocessors.
    ========================================================================== */
 
@@ -13,6 +13,12 @@
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-toolbar-bg: #e8eaee;
+  --color-editor-accent: #64748b;
+  --color-preview-accent: #2563eb;
+  --color-success-bg: #ecfdf5;
+  --color-success-text: #065f46;
+  --color-error-bg: #fef2f2;
+  --color-error-text: #991b1b;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Cascadia Code", "Consolas", "Courier New", monospace;
   /* Devanagari-friendly stack for Hindi and Sanskrit in preview */
@@ -84,17 +90,37 @@ body {
 /* --- Toolbar --- */
 .toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
   background-color: var(--color-toolbar-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
 
+.toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+}
+
+.toolbar-row--secondary {
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .toolbar-btn {
-  padding: 0.45rem 0.9rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.25rem;
   font-family: inherit;
   font-size: 0.875rem;
   font-weight: 500;
@@ -132,18 +158,145 @@ body {
   border-color: var(--color-primary-hover);
 }
 
+.toolbar-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Template selector in toolbar */
+.toolbar-templates {
+  flex: 1 1 auto;
+  min-width: 240px;
+}
+
+.toolbar-select {
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
+  padding: 0.45rem 0.65rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.toolbar-select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
+  border-color: var(--color-primary);
+}
+
+/* PDF filename input in toolbar */
+.toolbar-filename {
+  margin-left: auto;
+  flex: 1 1 auto;
+  min-width: 220px;
+  justify-content: flex-end;
+}
+
+/* --- Status bar and document stats --- */
+.app-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.status-message {
+  margin: 0;
+  flex: 1 1 200px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.status-message--info {
+  color: var(--color-text-muted);
+}
+
+.status-message--success {
+  color: var(--color-success-text);
+  font-weight: 500;
+}
+
+.status-message--error {
+  color: var(--color-error-text);
+  font-weight: 500;
+}
+
+.document-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.stats-separator {
+  opacity: 0.5;
+}
+
+.toolbar-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.toolbar-input {
+  flex: 1;
+  min-width: 160px;
+  max-width: 280px;
+  padding: 0.45rem 0.65rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.toolbar-input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
+  border-color: var(--color-primary);
+}
+
 /* --- Two-column editor layout --- */
 .editor-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  align-items: start;
+  gap: 1.25rem;
+  align-items: stretch;
 }
 
 .panel {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  padding: 0.85rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel--input {
+  border-top: 3px solid var(--color-editor-accent);
+}
+
+.panel--preview {
+  border-top: 3px solid var(--color-preview-accent);
 }
 
 .panel-title {
@@ -158,13 +311,14 @@ body {
 /* --- Markdown textarea --- */
 .markdown-textarea {
   width: 100%;
+  flex: 1;
   min-height: 500px;
-  padding: 1rem;
+  padding: 1rem 1.1rem;
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-text);
-  background-color: var(--color-surface);
+  background-color: #fafbfc;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   resize: vertical;
@@ -182,24 +336,44 @@ body {
 
 /* --- Preview panel: document-style white page --- */
 .preview-output {
+  flex: 1;
   min-height: 500px;
-  padding: 2rem 2.5rem;
+  padding: 2rem 2.25rem;
   font-family: var(--font-sans), var(--font-devanagari);
-  font-size: 1rem;
-  line-height: 1.65;
-  background-color: var(--color-surface);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #1f2937;
+  background-color: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-page);
   overflow-x: auto;
-  /* Improves readability for Devanagari script (Hindi, Sanskrit) */
   text-rendering: optimizeLegibility;
+}
+
+.preview-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.preview-placeholder-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .preview-placeholder {
   margin: 0;
+  max-width: 28rem;
+  font-size: 0.9rem;
   color: var(--color-text-muted);
-  font-style: italic;
+  line-height: 1.55;
 }
 
 .preview-error {
@@ -360,6 +534,41 @@ body {
   line-height: 1.8;
 }
 
+/* --- PDF export document styling (applied during html2pdf export) --- */
+.preview-output.pdf-export-document {
+  width: 100%;
+  max-width: 190mm;
+  min-height: auto;
+  margin: 0 auto;
+  padding: 8mm 10mm;
+  color: #111111;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.preview-output.pdf-export-document a {
+  color: #1a1d23;
+  text-decoration: underline;
+}
+
+.preview-output.pdf-export-document table {
+  page-break-inside: avoid;
+}
+
+.preview-output.pdf-export-document pre,
+.preview-output.pdf-export-document blockquote {
+  page-break-inside: avoid;
+}
+
+.preview-output.pdf-export-document h1,
+.preview-output.pdf-export-document h2,
+.preview-output.pdf-export-document h3 {
+  page-break-after: avoid;
+}
+
 /* --- Footer --- */
 .site-footer {
   margin-top: auto;
@@ -391,38 +600,97 @@ body {
 
   .editor-layout {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .panel {
+    padding: 0.65rem;
   }
 
   .markdown-textarea,
   .preview-output {
-    min-height: 320px;
+    min-height: 280px;
   }
 
-  .toolbar {
-    justify-content: center;
+  .preview-empty-state {
+    min-height: 220px;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-group {
+    width: 100%;
   }
 
   .toolbar-btn {
     flex: 1 1 auto;
     min-width: calc(50% - 0.25rem);
+    min-height: 2.75rem;
+  }
+
+  .toolbar-templates,
+  .toolbar-filename {
+    margin-left: 0;
+    justify-content: stretch;
+  }
+
+  .toolbar-select,
+  .toolbar-input {
+    flex: 1;
+    max-width: none;
+    min-height: 2.75rem;
+  }
+
+  .app-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .document-stats {
+    white-space: normal;
   }
 }
 
-/* --- Print styles: hide chrome, show preview as printable document --- */
+/* --- Print styles: hide chrome, print preview only (browser Save as PDF fallback) --- */
+@page {
+  size: A4 portrait;
+  margin: 18mm 15mm;
+}
+
 @media print {
+  html,
   body {
-    background: #ffffff;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+    color: #000000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .site-header,
   .toolbar,
+  .app-meta-bar,
   .panel--input,
   .site-footer {
     display: none !important;
   }
 
+  .panel--preview {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
   .app-main {
     max-width: none;
+    width: 100%;
     padding: 0;
     margin: 0;
   }
@@ -431,16 +699,47 @@ body {
     display: block;
   }
 
+  .panel--preview {
+    display: block;
+    width: 100%;
+  }
+
   .panel--preview .panel-title {
     display: none;
   }
 
   .preview-output {
+    display: block;
+    width: 100%;
+    max-width: none;
     min-height: auto;
+    margin: 0;
     padding: 0;
+    background: #ffffff !important;
     border: none;
     border-radius: 0;
     box-shadow: none;
     overflow: visible;
+    page-break-inside: auto;
+  }
+
+  .preview-output table {
+    page-break-inside: avoid;
+  }
+
+  .preview-output pre,
+  .preview-output blockquote {
+    page-break-inside: avoid;
+  }
+
+  .preview-output h1,
+  .preview-output h2,
+  .preview-output h3 {
+    page-break-after: avoid;
+  }
+
+  .preview-output a {
+    color: #000000;
+    text-decoration: underline;
   }
 }
