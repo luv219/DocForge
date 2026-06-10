@@ -42,6 +42,19 @@ Then visit [http://localhost:8080](http://localhost:8080).
 
 ---
 
+## GitHub Pages Deployment
+
+- This project is a **static frontend app**.
+- GitHub Pages deploys the **`public`** folder using GitHub Actions (`.github/workflows/deploy-pages.yml`).
+- In the repository **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**.
+- After a successful deploy on the `main` branch, the site is available at:
+
+  **https://luv219.github.io/Markora-PDF/**
+
+- No backend, database, or server is required for the current MVP.
+
+---
+
 ## Usage
 
 | Action | How |
